@@ -12,18 +12,20 @@ class ContainerPickerViewController: UIViewController {
 
     //IBOutlets
     @IBOutlet weak var containerView :UIView!
+    @IBOutlet weak var testLabel :UILabel!
     
     //Vars
-    var contentsViewController :UIViewController?
+    var contentsViewController :ContentsViewController?
     var contentsTag :Int?
     
     //View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentsViewController = self.storyboard?.instantiateViewController(withIdentifier: "redViewController")
+        contentsViewController = self.storyboard?.instantiateViewController(withIdentifier: "redViewController") as! ContentsViewController?
         contentsViewController!.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(contentsViewController!)
         self.addSubviewWithConstraints(subView: contentsViewController!.view, toView: containerView)
+        contentsViewController?.delegate = self
         contentsTag = 101
     }
     
@@ -55,17 +57,17 @@ class ContainerPickerViewController: UIViewController {
     }
 
     //Background Methods
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func switchContentsViewController(identifier :String) {
         let newViewController = self.storyboard?.instantiateViewController(withIdentifier: identifier)
         newViewController?.view.translatesAutoresizingMaskIntoConstraints = false
-        cycleFromViewController(oldViewController: self.contentsViewController!, toViewController: newViewController!)
-        self.contentsViewController = newViewController
-        
+        cycleFromViewController(oldViewController: contentsViewController!, toViewController: newViewController!)
+        contentsViewController = newViewController as! ContentsViewController?
+        contentsViewController?.delegate = self
     }
     
     private func cycleFromViewController(oldViewController :UIViewController, toViewController newViewController :UIViewController) {
@@ -92,5 +94,14 @@ class ContainerPickerViewController: UIViewController {
         parentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subView]|", options: [], metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subView]|", options: [], metrics: nil, views: viewBindingsDict))
     }
+}
 
+//Contents Delegate Methods
+extension ContainerPickerViewController :ContentsControllerDelegate {
+    
+    func printStatus(stringToPrint: String) {
+        testLabel.text = stringToPrint
+    }
+    
+    
 }

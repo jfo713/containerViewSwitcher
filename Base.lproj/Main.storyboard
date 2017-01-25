@@ -90,6 +90,13 @@
                                     <action selector="updateContainerWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hAH-2f-Gjg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="testLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iax-IE-Rgp">
+                                <rect key="frame" x="152" y="35" width="71" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -116,6 +123,7 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="4HG-hu-DB8" id="Elr-jc-DNf"/>
+                        <outlet property="testLabel" destination="iax-IE-Rgp" id="mI6-LL-E9A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -125,7 +133,7 @@
         <!--redViewController-->
         <scene sceneID="XH0-rI-gbk">
             <objects>
-                <viewController storyboardIdentifier="redViewController" id="wib-fE-Hhm" userLabel="redViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="redViewController" id="wib-fE-Hhm" userLabel="redViewController" customClass="ContentsViewController" customModule="containerViewSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HTC-XE-Wfv"/>
                         <viewControllerLayoutGuide type="bottom" id="sV1-KJ-6Tf"/>
@@ -136,6 +144,26 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghq-HC-saQ">
                                 <rect key="frame" x="0.0" y="20" width="343" height="273"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8c4-42-cKa">
+                                        <rect key="frame" x="97" y="121" width="149" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzP-Fg-khX">
+                                        <rect key="frame" x="136" y="159" width="71" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.094117647060000004" green="0.47058823529999999" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Update">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateButton" destination="wib-fE-Hhm" eventType="touchUpInside" id="FCs-Qd-Ej0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.66618192430000001" green="0.1146387081" blue="0.077122321669999994" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -149,15 +177,18 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="343" height="293"/>
+                    <connections>
+                        <outlet property="testTextField" destination="8c4-42-cKa" id="zej-Tx-Feb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8E-Mn-w9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="724" y="336"/>
+            <point key="canvasLocation" x="724" y="335.98200899550227"/>
         </scene>
         <!--blueViewController-->
         <scene sceneID="7yo-ZM-w7E">
             <objects>
-                <viewController storyboardIdentifier="blueViewController" id="KDZ-SH-xyw" userLabel="blueViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="blueViewController" id="KDZ-SH-xyw" userLabel="blueViewController" customClass="ContentsViewController" customModule="containerViewSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KSJ-fX-n7F"/>
                         <viewControllerLayoutGuide type="bottom" id="6C9-HH-LC7"/>
@@ -189,7 +220,7 @@
         <!--greenViewController-->
         <scene sceneID="9kE-Z1-V07">
             <objects>
-                <viewController storyboardIdentifier="greenViewController" id="A30-hi-dSS" userLabel="greenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="greenViewController" id="A30-hi-dSS" userLabel="greenViewController" customClass="ContentsViewController" customModule="containerViewSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vca-GX-5kV"/>
                         <viewControllerLayoutGuide type="bottom" id="WcA-0P-5q4"/>
@@ -221,7 +252,7 @@
         <!--orangeViewController-->
         <scene sceneID="aGs-NW-he6">
             <objects>
-                <viewController storyboardIdentifier="orangeViewController" id="1p3-2L-Ble" userLabel="orangeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orangeViewController" id="1p3-2L-Ble" userLabel="orangeViewController" customClass="ContentsViewController" customModule="containerViewSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zS8-G0-oS0"/>
                         <viewControllerLayoutGuide type="bottom" id="vE7-no-qoW"/>
@@ -253,7 +284,7 @@
         <!--purpleViewController-->
         <scene sceneID="4xg-2q-phJ">
             <objects>
-                <viewController storyboardIdentifier="purpleViewController" id="F7e-4M-7gP" userLabel="purpleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="purpleViewController" id="F7e-4M-7gP" userLabel="purpleViewController" customClass="ContentsViewController" customModule="containerViewSwitcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o9q-7a-Va7"/>
                         <viewControllerLayoutGuide type="bottom" id="Mjh-MM-RUM"/>
