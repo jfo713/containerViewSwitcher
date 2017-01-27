@@ -11,21 +11,21 @@ import UIKit
 class ContentsViewController: UIViewController {
     
     @IBOutlet weak var testTextField :UITextField?
+    @IBOutlet weak var contentTestLabel :UILabel?
 
-    weak var delegate :ContentsControllerDelegate?
+    weak var contentsDelegate :ContentsControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     @IBAction func updateButton() {
-        self.delegate!.printStatus(stringToPrint: (self.testTextField?.text!)!)
+        self.contentsDelegate!.printContentStatus(stringToPrint: (self.testTextField?.text!)!)
     }
-}
+    
+    @IBAction func queryButton() {
+        self.contentsDelegate!.printContainerStatus()
+    }
 
-extension ContentsViewController :ContentsControllerDelegate {
-    
-    func printStatus(stringToPrint: String){}
-    
 }

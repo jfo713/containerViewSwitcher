@@ -12,11 +12,12 @@ class ContainerPickerViewController: UIViewController {
 
     //IBOutlets
     @IBOutlet weak var containerView :UIView!
-    @IBOutlet weak var testLabel :UILabel!
+    @IBOutlet weak var containerTestLabel :UILabel!
     
     //Vars
     var contentsViewController :ContentsViewController?
     var contentsTag :Int?
+    var testString :String?
     
     //View Methods
     override func viewDidLoad() {
@@ -25,7 +26,7 @@ class ContainerPickerViewController: UIViewController {
         contentsViewController!.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(contentsViewController!)
         self.addSubviewWithConstraints(subView: contentsViewController!.view, toView: containerView)
-        contentsViewController?.delegate = self
+        contentsViewController?.contentsDelegate = self
         contentsTag = 101
     }
     
@@ -67,7 +68,7 @@ class ContainerPickerViewController: UIViewController {
         newViewController?.view.translatesAutoresizingMaskIntoConstraints = false
         cycleFromViewController(oldViewController: contentsViewController!, toViewController: newViewController!)
         contentsViewController = newViewController as! ContentsViewController?
-        contentsViewController?.delegate = self
+        contentsViewController?.contentsDelegate = self
     }
     
     private func cycleFromViewController(oldViewController :UIViewController, toViewController newViewController :UIViewController) {
@@ -79,7 +80,7 @@ class ContainerPickerViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             newViewController.view.alpha = 1
             oldViewController.view.alpha = 0
-        },
+            },
                        completion: {finished in
                         oldViewController.view.removeFromSuperview()
                         oldViewController.removeFromParentViewController()
@@ -99,9 +100,17 @@ class ContainerPickerViewController: UIViewController {
 //Contents Delegate Methods
 extension ContainerPickerViewController :ContentsControllerDelegate {
     
-    func printStatus(stringToPrint: String) {
-        testLabel.text = stringToPrint
+    func printContentStatus(stringToPrint: String) {
+        testString = stringToPrint
+        containerTestLabel.text = stringToPrint
     }
     
-    
+    func printContainerStatus() {
+        if testString != nil {
+            contentsViewController?.contentTestLabel?.text = testString
+            }
+        else {
+            return
+            }
+    }
 }

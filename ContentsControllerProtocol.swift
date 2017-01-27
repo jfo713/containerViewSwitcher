@@ -8,6 +8,7 @@
 
 protocol ContentsControllerDelegate :class {
     
-    func printStatus(stringToPrint :String)
+    func printContentStatus(stringToPrint :String)
+    func printContainerStatus()
     
 }
