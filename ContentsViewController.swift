@@ -17,15 +17,30 @@ class ContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.testTextField?.delegate = self
     }
     
     @IBAction func updateButton() {
-        self.contentsDelegate!.printContentStatus(stringToPrint: (self.testTextField?.text!)!)
+        if testTextField?.text != "" {
+            self.contentsDelegate!.printContentStatus(stringToPrint: (self.testTextField?.text!)!)
+            testTextField?.resignFirstResponder()
+        }
+        else {
+            return
+        }
     }
     
     @IBAction func queryButton() {
         self.contentsDelegate!.printContainerStatus()
     }
+}
 
+extension ContentsViewController :UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ testTextField :UITextField) -> Bool {
+        self.contentsDelegate!.printContentStatus(stringToPrint: (self.testTextField?.text!)!)
+        testTextField.resignFirstResponder()
+        return true
+    }
+    
 }
